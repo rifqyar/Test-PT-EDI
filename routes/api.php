@@ -23,13 +23,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', [AuthController::class, 'login']);
 
+Route::post('user/store', [UserController::class, 'store']);
 Route::middleware(['jwt.auth'])->group(function () {
     Route::get('cek-token', [AuthController::class, 'cekToken']);
     // User Route
     Route::prefix('user')->group(function(){
         Route::get('/', [UserController::class, 'index']);
         Route::get('/{id}', [UserController::class, 'show']);
-        Route::post('/store', [UserController::class, 'store']);
         Route::post('/update/{id}', [UserController::class, 'update']);
         Route::get('/delete/{id}', [UserController::class, 'destroy']);
     });

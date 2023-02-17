@@ -18,7 +18,7 @@ class KaryawanController extends Controller
     public function index()
     {
         try {
-            $karyawan = Karyawan::get();
+            $karyawan = Karyawan::with('user')->get();
             return response()->json([
                 'status' => [
                     'code'      => 200,
@@ -108,7 +108,7 @@ class KaryawanController extends Controller
             $karyawan = Karyawan::find($id_karyawan);
             if ($karyawan != null){
                 $karyawan->update([
-                    'name' => $request->name,
+                    'nama' => $request->name,
                     'no_ktp' => $request->no_ktp,
                     'ttl' => $request->ttl,
                     'jk' => $request->jk,

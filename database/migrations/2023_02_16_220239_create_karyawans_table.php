@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('nama', 50);
             $table->string('no_ktp', 18)->nullable();
             $table->string('ttl', 75)->nullable();
-            $table->integer('jk')->nullable();
-            $table->integer('agama')->nullable();
+            $table->string('jk')->nullable();
+            $table->string('agama')->nullable();
             $table->string('gol_darah', 2)->nullable();
             $table->string('alamat', 150)->nullable();
             $table->string('no_telp', 15)->nullable();

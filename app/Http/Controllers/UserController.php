@@ -120,12 +120,14 @@ class UserController extends Controller
                 $user->update([
                     'name' => $request->name,
                     'email' => $request->email,
-                    'password' => bcrypt($request->password),
-                    'id_role' => isset($request->id_role) ? $request->id_role : null,
-                    'status' => $request->status,
+                    'password' => isset($request->password) ? bcrypt($request->password) : $user->password,
+                    'id_role' => isset($request->id_role) ? $request->id_role : $user->id_role,
+                    'status' => isset($request->status) ? $request->status : 1,
                 ]);
 
-                KaryawanController::update($request, $user->id_karyawan);
+                if($request->header('update_karyawan')){
+                    KaryawanController::update($request, $user->id_karyawan);
+                }
 
                 return response()->json([
                     'status' => [

@@ -30,4 +30,8 @@ class Karyawan extends Model
     function jk(){
         return $this->hasOne(JenisKelamins::class, 'id', 'jk');
     }
+
+    function user(){
+        return $this->hasOne(User::class, 'id', 'id_user');
+    }
 }
